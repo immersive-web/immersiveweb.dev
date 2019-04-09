@@ -1,0 +1,33 @@
+body {
+    font-family: system,Helvetica Neue,Helvetica,sans-serif;
+    font-size: 16px;
+    color: rgb(77, 86, 89);
+}
+
+table td {
+    padding: 0.5em;
+}
+
+thead tr td {
+    border-bottom: 1px solid gray;
+    font-weight: bold;
+}
+
+td:first-child {
+    text-align: right;
+}
+
+main {
+    margin: 0 3em;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 1em;
+}
+
+h1, h2, h3 {
+    grid-column: 1/span 4;
+}
+
+table {
+    grid-column: 1/span 4;
+}
