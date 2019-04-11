@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: system,Helvetica Neue,Helvetica,sans-serif;
     font-size: 16px;
@@ -21,7 +25,7 @@ main {
     margin: 0 3em;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-column-gap: 1em;
+    grid-gap: 1em;
 }
 
 h1, h2, h3 {
@@ -30,4 +34,22 @@ h1, h2, h3 {
 
 table {
     grid-column: 1/span 4;
+}
+
+figure a {
+    display: contents;
+}
+
+figure a img {
+    padding-top: 80%;
+    width: 100%;
+    border: 3px solid #24aef4;
+}
+
+figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 0;
 }
