@@ -31,10 +31,11 @@ td:first-child {
 }
 
 main {
-    margin: 0 3em;
+    margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1em;
+    max-width: 1024px;
 }
 
 h1, h2, h3 {
@@ -90,12 +91,20 @@ nav[role="tablist"] > a {
     display: inline-block;
 }
 
+nav[role="tablist"] > a:target {
+    font-weight: bold;
+}
+
 .tabs {
     padding: 1em;
     background: #bcccd4;
 }
 
-.tabs article:not(:target) {
+.tabs > article:not(:target):not(.default-fallback) {
+    display: none;
+}
+
+.tabs > article:target ~ .default-fallback {
     display: none;
 }
 
