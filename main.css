@@ -82,6 +82,9 @@ nav[role="tablist"], .tabs {
 nav[role="tablist"] {
     border-bottom: 1px solid grey;
     margin-bottom: -1em;
+    overflow-x: auto;
+    white-space: nowrap;
+    z-index: 2;
 }
 
 nav[role="tablist"] > a {
@@ -106,6 +109,12 @@ nav[role="tablist"] > a:target {
 
 .tabs > article:target ~ .default-fallback {
     display: none;
+}
+
+.tabs > article {
+    margin-top: -5em;
+    padding-top: 5em;
+    pointer-events: painted;
 }
 
 *:focus {

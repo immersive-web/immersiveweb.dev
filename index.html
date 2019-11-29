@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +20,7 @@
 			Try out some Demos
 		</h2>
 		<figure style="grid-column:1/-1;">
-			<iframe style="width: 100%; height: 80vh;" src="https://immersive-web.github.io/webxr-samples/inline-session.html" frameborder="0"></iframe>
+			<iframe style="width: 100%; height: 80vh;" src="https://toji.github.io/webxr-particles/" frameborder="0"></iframe>
 			<figcaption>A demo of VR and AR with the WebXR Device API</figcaption>
 		</figure>
 		<figure style="grid-column:1;">
@@ -69,21 +71,27 @@
 		<h2>
 			Getting started building a WebXR Website
 		</h2>
-		<nav role="tablist">
-			<a href="#aframetab" aria-controls="aframetab" role="tab">A-Frame</a>
-			<a href="#threejstab" aria-controls="threejstab" role="tab">THREE.js</a>
-			<a href="#babylontab" aria-controls="babylontab" role="tab">Babylon</a>
+		<article style="grid-column:1/-1;">
+			<p>These are brief guides to building a site which uses and AR and VR.</p>
+			<p>The WebXR device API relies on graphics APIs like WebGL & WebGL2 to work, these graphics libraries and frameworks come with WebXR support built in.</p>
+		</article>
+		<nav role="tablist" id="gettingStartedTabs">
+			{% for page in site.pages %}
+			{% assign path = page.path | split: '/'  %}
+			{% if path[0] == "getting-started" %}
+			<a href="#{{ page.title | handleize }}" aria-controls="{{ page.title | handleize }}" role="tab">
+				{{ page.title }}
+			</a>
+			{% endif %}{% endfor %}
 		</nav>
 		<section class="tabs" aria-live="polite" role="region">
-			<article id="aframetab" role="tabpanel">
-				<p><a href="https://aframe.io">A-Frame</a>, is a JS library to use HTML to create VR and AR experiences in the Web.</p>
+			{% for page in site.pages %}
+			{% assign path = page.path | split: '/'  %}
+			{% if path[0] == "getting-started" %}
+			<article id="{{ page.title | handleize }}" role="tabpanel">
+				{{ page.content | markdownify }}
 			</article>
-			<article id="threejstab" role="tabpanel">
-				<p>Three.js is a cross-browser JavaScript library and Application Programming Interface (API) used to create and display animated 3D computer graphics in a web browser.</p> 
-			</article>
-			<article id="babylontab" role="tabpanel">
-				<p>Babylon.js is a real time 3D engine using a JavaScript library for displaying 3D graphics in a web browser via HTML5.</p>
-			</article>
+			{% endif %}{% endfor %}
 			<article class="default-fallback" role="tabpanel">
 				<p>Click on a tab to begin.</p>
 			</article>
