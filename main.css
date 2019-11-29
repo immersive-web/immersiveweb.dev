@@ -46,17 +46,26 @@ table {
     grid-column: 1/span 4;
 }
 
-figure a {
+figure a.img-a {
     display: inline-block;
     width: 100%;
     line-height: 0;
+    position: relative;
+    border: 3px solid #24aef4;
+    padding-bottom: 66%;
+    overflow: hidden;
 }
 
-figure a img {
+figure a.img-a:hover img {
+    transform: scale(1.2);
+}
+
+figure a.img-a img {
+    position: absolute;
     width: 100%;
-    padding-top: 80%;
-    border: 3px solid #24aef4;
-    display: inline-block;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1s ease-out;
 }
 
 figure {
