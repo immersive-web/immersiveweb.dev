@@ -22,7 +22,7 @@ Each guide should have the following sections:
 * Introduce the framework
 * A screenshot of the end result of the tutorial
 * A short guide on how to make a single scene which works with VR and AR
-* A "remix on glitch" button would be cool is appropriate.
+* A "remix on glitch" button would be cool if appropriate.
 
 ### Editing the Compat Table
 
