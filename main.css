@@ -85,6 +85,7 @@ footer {
 
 nav[role="tablist"], .tabs {
     grid-column: 1/-1;
+    max-width: 100%;
 }
 
 
