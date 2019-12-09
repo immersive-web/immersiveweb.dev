@@ -1,4 +1,26 @@
 ---
 title: AFrameVR
 ---
-<p><a href="https://aframe.io">A-Frame</a>, is a JS library to use HTML to create VR and AR experiences in the Web.</p>
+
+# AR and VR
+
+<a href="https://aframe.io/docs">A-Frame</a>, is a JS library to use HTML to create VR and AR experiences in the Web.
+
+A-Frame is based on THREE.js and has a large community, as well as lots of community made custom elements and components. 
+
+```
+<html>
+  <head>
+    <script src="https://raw.githack.com/aframevr/aframe/master/dist/aframe-master.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
+      <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
+      <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
+      <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
+      <a-sky color="#ECECEC"></a-sky>
+    </a-scene>
+  </body>
+</html>
+```
