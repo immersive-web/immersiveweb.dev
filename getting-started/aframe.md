@@ -8,7 +8,7 @@ title: AFrameVR
 
 A-Frame is based on THREE.js and has a large community, as well as lots of community made custom elements and components. 
 
-```
+```html
 <html>
   <head>
     <script src="https://raw.githack.com/aframevr/aframe/master/dist/aframe-master.min.js"></script>
