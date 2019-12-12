@@ -2,9 +2,20 @@
     box-sizing: border-box;
 }
 
+:root {
+    --imgcols: 2;
+}
+
+@media screen and (min-width: 800px) {
+    :root {
+        --imgcols: 1;
+    }
+}
+
 html {
     scroll-behavior: smooth;
 }
+
 @media screen and (prefers-reduced-motion: reduce) {
 	html {
 		scroll-behavior: auto;
@@ -16,7 +27,11 @@ body {
     font-size: 16px;
     color: rgb(77, 86, 89);
 }
-
+.compat-table {
+    grid-column: 1/-1;
+    max-width: 100%;
+    overflow-x: auto;
+}
 table td {
     padding: 0.5em;
 }
@@ -39,11 +54,22 @@ main {
 }
 
 h1, h2, h3 {
-    grid-column: 1/span 4;
+    grid-column: 1/-1;
+}
+
+.targetlink {
+    color: grey;
+    font-size: 0.8em;
+    text-decoration: none;
 }
 
 table {
     grid-column: 1/span 4;
+}
+
+figure {
+    grid-column-end: span 1;
+    grid-column-end: span var( --imgcols);
 }
 
 figure a.img-a {
