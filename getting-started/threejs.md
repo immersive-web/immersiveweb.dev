@@ -35,9 +35,9 @@ Here is a full example that sets up a scene with a rotating red cube.
 
 <script type="module">
     //import three
-    import * as THREE from 'https://threejs.org/build/three.module.js';
+    import * as THREE from 'https://unpkg.com/three/build/three.module.js';
     //import the default VRButton
-    import { VRButton } from 'https://threejs.org/examples/jsm/webxr/VRButton.js';
+    import { VRButton } from 'https://unpkg.com/three/examples/jsm/webxr/VRButton.js';
     let container, scene, camera, renderer
     let clock = new THREE.Clock();
     let cube
