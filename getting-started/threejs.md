@@ -12,7 +12,7 @@ For more info, see [this guide to VR in ThreeJS](https://threejs.org/docs/#manua
 Here is a full example that sets up a scene with a rotating red cube.
 
 
-```
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
