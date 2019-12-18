@@ -11,7 +11,7 @@ A-Frame is based on THREE.js and has a large community, as well as lots of commu
 ```html
 <html>
   <head>
-    <script src="https://raw.githack.com/aframevr/aframe/master/dist/aframe-master.min.js"></script>
+    <script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
   </head>
   <body>
     <a-scene>
