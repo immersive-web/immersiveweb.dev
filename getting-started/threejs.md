@@ -70,9 +70,13 @@ Here is a full example that sets up a scene with a rotating red cube.
             renderer.setSize( window.innerWidth, window.innerHeight );
         }, false);
 
-        //add a button to enter/exit vr to the page
+        //add a button to enter/exit immersive mode with VR
         document.body.appendChild(VRButton.createButton(renderer));
 
+        //For AR import ARButton at the top
+        //    import { ARButton } from 'https://unpkg.com/three/examples/jsm/webxr/ARButton.js';
+        // then create the button
+        //  document.body.appendChild(ARButton.createButton(renderer));
 
         //add some lights
         var light = new THREE.DirectionalLight(0xffffff,0.5);
