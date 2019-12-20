@@ -51,7 +51,7 @@
 			These are samples from the <a href="https://immersive-web.github.io/webxr-samples/">WebXR Samples from the Immersive Web Working Group</a>
 			They use a very minimal libary to show how one can make use of the WebXR Device API directly.
 		</p>
-		<figure style="grid-column:1;">
+		<figure>
 			<a href="https://immersive-web.github.io/webxr-samples/inline-session.html" class="img-a">
 				<img src="./images/inlinesession.png">
 			</a>
@@ -86,7 +86,7 @@
 		<h2>
 			WebXR in the Real World
 		</h2>
-		<figure style="grid-column-end: span 2;">
+		<figure style="grid-column-end: span calc(var(--imgcols) * 2);">
 			<a href="https://www.with.in/watch/what-you-dont-know" class="img-a">
 				<img src="./images/wydk.png">
 			</a> 
@@ -126,10 +126,20 @@
 				<p>Click on a tab to begin.</p>
 			</article>
 		</section>
+		<h2>Tooling</h2>
+		<figure>
+			<a href="https://chrome.google.com/webstore/detail/webxr-api-emulator/mjddjgeghkdijejnciaefnkjmkafnnje" class="img-a">
+				<img src="./images/wbxrapiemulator.png">
+			</a>
+			<figcaption>WebXR Emulator extension enables users and developers to run and test WebXR content in desktop browsers without using a real XR device.
+The extension will emulate the WebXR API on browsers that don’t support it yet and also provide a list of XR devices with their controllers to emulate.</figcaption>
+		</figure>
 		<h2 id="supporttable">
-			<a href="#supporttable">Support Table for the WebXR Device API</a>
+			Support Table for the WebXR Device API
 		</h2>
-		{% include compat-table.html %}
+		<div class="compat-table">
+			{% include compat-table.html %}
+		</div>
 		<footer>
 			<p>CC0 Licensed, feel free to remix, Maintained by the <a href ="https://w3.org/immersive-web">W3C Immersive Web Working and Community Groups</a>
 			</p>
@@ -138,5 +148,16 @@
 			</p>
 		</footer>
 	</main>
+	<script>
+		Array.from(document.querySelectorAll('main > h1,main > h2, main > h3')).forEach(el => {
+			const id = el.id || el.textContent.replace(/[^a-z0-9]/gi,'').toLocaleLowerCase();
+			el.setAttribute('id', id);
+			const linkEl = document.createElement('A');
+			linkEl.className = 'targetlink';
+			linkEl.setAttribute('href', '#' + id);
+			linkEl.innerHTML = '🔗&#xFE0E;';
+			el.insertAdjacentElement('afterbegin', linkEl);
+		});
+	</script>
 </body>
 </html>
