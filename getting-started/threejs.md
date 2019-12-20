@@ -73,6 +73,11 @@ Here is a full example that sets up a scene with a rotating red cube.
         // Add a button to enter/exit vr to the page
         document.body.appendChild(VRButton.createButton(renderer));
 
+        // For AR instead, import ARButton at the top
+        //    import { ARButton } from 'https://unpkg.com/three/examples/jsm/webxr/ARButton.js';
+        // then create the button
+        //  document.body.appendChild(ARButton.createButton(renderer));
+
         // Handle browser resize
         window.addEventListener('resize', onWindowResize, false);
 
