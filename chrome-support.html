@@ -1,0 +1,171 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="/main.css">
+	<link rel="stylesheet" href="/highlight.css">
+    <title>Chrome Hardware Support - Immersive Web Developer Home</title>
+    <meta property="og:title" content="Chrome Hardware Support - Immersive Web Developer Home">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@ImmersiveWebW3C">
+    <meta name="twitter:creator" content="@ImmersiveWebW3C">
+	<meta property="og:url" content="https://immersiveweb.dev/">
+	<meta name="description" content="Get started building XR applications through the Web with the WebXR Device API, demos, docs, samples and more.">
+    <meta property="og:description" content="Get started building XR applications through the Web with the WebXR Device API, demos, docs, samples and more.">
+    <meta property="og:image" content="https://immersiveweb.dev/images/webxrlogo.png">
+</head>
+<body>
+	<main>
+		<img src="./webxr-logo.svg" alt="The WebXR Device API" />
+		<h1>Chrome Hardware Support</h1>
+		<article style="grid-column: 1/3;">
+			<p>Chrome supports WebXR on a variety of platforms and hardware. This page details the supported devices and required configuration (if any) to use them.</p>
+		</article>
+		<h2>
+			Chrome Compatibility Table
+		</h2>
+		<div class="compat-table">
+			<table>
+				<thead>
+					<tr>
+						<td>Device</td>
+						<td>OS</td>
+						<td>Runtime</td>
+						<td>Supported Session Modes</td>
+						<td>WebXR Support</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							Windows Mixed Reality PC headsets
+						</td>
+						<td>Windows</td>
+						<td>Windows Mixed Reality</td>
+						<td>immersive-vr</td>
+						<td>Enabled in Chrome 79+</td>
+					</tr>
+					<tr>
+						<td>
+							Daydream View<br/>
+							Lenovo Mirage Solo
+						</td>
+						<td>Android</td>
+						<td>Google VR</td>
+						<td>immersive-vr</td>
+						<td>Enabled in Chrome 79+</td>
+					</tr>
+					<tr>
+						<td>
+							<a href="https://developers.google.com/ar/discover/supported-devices">ARCore-compabile mobile devices</a>
+						</td>
+						<td>Android</td>
+						<td>ARCore</td>
+						<td>immersive-ar</td>
+						<td><a href="#experimental-ar-flags">Experimental AR support</a></td>
+					</tr>
+					<tr>
+						<td>
+							Oculus Rift<br/>
+							Oculus Rift S<br/>
+						</td>
+						<td>Windows</td>
+						<td>Oculus</td>
+						<td>immersive-vr</td>
+						<td><a href="#experimental-vr-flags">Experimental VR support</a></td>
+					</tr>
+					<tr>
+						<td>
+							HTC Vive<br/>
+							Valve Index<br/>
+							Other OpenVR-compatible headsets<br/>
+						</td>
+						<td>Windows</td>
+						<td>SteamVR</td>
+						<td>immersive-vr</td>
+						<td><a href="#experimental-vr-flags">Experimental VR support</a></td>
+					</tr>
+					<tr>
+						<td>
+							OpenXR-compatible headsets
+						</td>
+						<td>Windows</td>
+						<td>OpenXR</td>
+						<td>immersive-vr</td>
+						<td><a href="#experimental-vr-flags">Experimental VR support</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<h2 id='experimental-ar-flags'>
+			Enabling experimental AR support for mobile devices
+		</h2>
+		<p style="grid-column: 1/3;">
+			Mobile AR support is expected to be available by default soon, but until then it can be enabled by following the steps below.
+			<br/><br/>
+			<b>It is not recommended that you use Chrome with the following flags for daily browsing, as it enables features that have not been deemed ready for wide release.</b>
+		</p>
+		<p style="grid-column: 1/3;">
+			First, navigate to <i>about:flags</i> using the browser's URL bar, then use the search box on the experiments page to locate the <b>WebXR AR Module</b> flag. Set it to <b>"Enabled"</b>.
+		</p>
+		<figure style="grid-column: 1/2;">
+			<img src="./images/chrome-ar-flags.png" alt="AR flags on the about:flags page">
+		</figure>
+		<p style="grid-column: 1/3;">
+			Other experimental AR features can also be enabled on this page for testing, such as <b>WebXR Hit Test</b>, or <b>WebXR Incubations</b> (Chrome v81+) which covers experimental APIs such as <a href="https://immersive-web.github.io/dom-overlays/">DOM Overlay</a> and <a href="https://github.com/immersive-web/lighting-estimation/blob/master/lighting-estimation-explainer.md">Lighting Estimation</a>.
+			<br/><br/>
+			Finally, restart the browser by clicking the <b>"Relaunch"</b> button at the bottom of the page. Upon restart Chrome should be able to use the newly enabled AR features.
+		</p>
+
+		<h2 id='experimental-vr-flags'>
+			Enabling experimental support for other VR headsets
+		</h2>
+		<p style="grid-column: 1/3;">
+			Some desktop headsets are capable of working with Chrome but their associated runtimes have not yet been enabled by default. This is typically because the Chrome team is still working with the runtime developer to ensure it can be used with the browser's security requirements. Developers that want to test Chrome's support for these devices can enable them by following the steps below.
+			<br/><br/>
+			<b>It is not recommended that you use Chrome with the following flags for daily browsing, as it disables certain security measures around Chrome interaction with VR hardware.</b>
+			<br/><br/>
+			Additionally, please note that runtimes that have not been enabled by default may exhibit a variety of issues or not support all applicable WebXR features.
+		</p>
+		<p style="grid-column: 1/3;">
+			First, navigate to <i>about:flags</i> using the browser's URL bar, then use the search box on the experiments page to locate the <b>XR device sandboxing</b> flag. Set it to <b>"Disabled"</b>.
+		</p>
+		<figure style="grid-column: 1/2;">
+			<img src="./images/chrome-disable-sandbox.png" alt="The XR Device Sandboxing flag on the about:flags page">
+		</figure>
+		<p style="grid-column: 1/3;">
+			Next, search for the XR runtime that you want to use and set the flag to <b>"Enabled"</b>.
+		</p>
+		<figure style="grid-column: 1/2;">
+			<img src="./images/chrome-runtime-flags.png" alt="Various VR runtime flags on the about:flags page">
+		</figure>
+		<p style="grid-column: 1/3;">
+			Finally, restart the browser by clicking the <b>"Relaunch"</b> button at the bottom of the page. Upon restart Chrome should be able to use the newly enabled XR runtimes.
+		</p>
+
+		<footer>
+			<p>CC0 Licensed, feel free to remix, Maintained by the <a href ="https://w3.org/immersive-web">W3C Immersive Web Working and Community Groups</a>
+			</p>
+			<p>
+				Request changes by <a href="https://github.com/adarosecannon/immersiveweb">making a pull request on github.</a>
+			</p>
+		</footer>
+	</main>
+	<script>
+		Array.from(document.querySelectorAll('main > h1,main > h2, main > h3')).forEach(el => {
+			const id = el.id || el.textContent.replace(/[^a-z0-9]/gi,'').toLocaleLowerCase();
+			el.setAttribute('id', id);
+			const linkEl = document.createElement('A');
+			linkEl.className = 'targetlink';
+			linkEl.setAttribute('href', '#' + id);
+			linkEl.innerHTML = '🔗&#xFE0E;';
+			el.insertAdjacentElement('afterbegin', linkEl);
+		});
+	</script>
+</body>
+</html>

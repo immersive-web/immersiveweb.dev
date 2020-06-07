@@ -82,11 +82,39 @@
 				<li>Since the rendering is handled by WebGL, which has been around since 2011, you gain the benefit of WebGL's rich development tool ecosystem and a large, active developer community.</li>
 			</ul>
 		</article>
-
 		<h2>
 			WebXR in the Real World
 		</h2>
-		<figure style="grid-column-end: span calc(var(--imgcols) * 2);">
+		<figure style="grid-column-end: span var(--imgcols);">
+			<a href="https://mixedreality.mozilla.org/hello-webxr/" class="img-a">
+				<img src="./images/hello-webxr.jpg">
+			</a> 
+			<figcaption>
+				<h3>Hello WebXR</h3>
+				<p><small>Mozilla Mixed Reality</small></p>
+				<p>
+					The demo is designed as a playground where you can try different experiences and interactions in VR, and introduce newcomers to the VR world and its special language in a smooth, easy and nice way.
+				</p>
+			</figcaption>
+		</figure>
+		<figure style="grid-column-end: span var(--imgcols);">
+			<a href="https://www.xrdinosaurs.com/" class="img-a">
+				<img src="./images/xrdinosaurs.com.png">
+			</a> 
+			<figcaption>
+				<h3>XR Dinosaurs</h3>
+				<p><small>Brandon Jones</small></p>
+				<p>
+					Welcome to the web's virtual Dinosaur Park!
+<br />
+<br />					We've used the magic of your browser to bring back a friendly pack of prehistoric pals.
+<br />
+<br />					Our dinosaurs can be viewed with a variety of Virtual Reality headsets, Augmented Reality headsets and phones, or directly in your browser.
+
+				</p>
+			</figcaption>
+		</figure>
+		<figure style="grid-column-end: span var(--imgcols);">
 			<a href="https://www.with.in/watch/what-you-dont-know" class="img-a">
 				<img src="./images/wydk.png">
 			</a> 
@@ -127,12 +155,28 @@
 			</article>
 		</section>
 		<h2>Tooling</h2>
-		<figure>
-			<a href="https://chrome.google.com/webstore/detail/webxr-api-emulator/mjddjgeghkdijejnciaefnkjmkafnnje" class="img-a">
+		<figure style="grid-column-end: span calc(var(--imgcols) * 2);">
+			<a href="https://blog.mozvr.com/webxr-emulator-extension/" class="img-a">
 				<img src="./images/wbxrapiemulator.png">
 			</a>
-			<figcaption>WebXR Emulator extension enables users and developers to run and test WebXR content in desktop browsers without using a real XR device.
-The extension will emulate the WebXR API on browsers that don’t support it yet and also provide a list of XR devices with their controllers to emulate.</figcaption>
+			<figcaption>
+				<h3>WebXR API Emulator</h3>
+				<p><small>Mozilla Mixed Reality</small></p>
+				WebXR Emulator extension, for Chrome and Firefox enables users and developers to run and test WebXR content in desktop browsers without using a real XR device.
+	The extension will emulate the WebXR API on browsers that don’t support it yet and also provide a list of XR devices with their controllers to emulate.
+			</figcaption>
+		</figure>
+		<figure style="grid-column-end: span calc(var(--imgcols) * 2);">
+			<a href="https://immersive-web.github.io/webxr-input-profiles/packages/motion-controllers/" class="img-a">
+				<img src="./images/input-profiles.png">
+			</a> 
+			<figcaption>
+				<h3>WebXR Input Profiles</h3>
+				<p><small>W3C Immersive Web Working Group</small></p>
+				<p>
+					This repo provides a javascript library for managing known motion controller profiles, loading the most ideal known profile for a supplied input source, and creating a MotionController object that binds them together. Developers can use this library to interact with the conceptual components of an input source, rather than each individual button or axis.
+				</p>
+			</figcaption>
 		</figure>
 		<h2 id="supporttable">
 			Support Table for the WebXR Device API
