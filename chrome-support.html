@@ -66,7 +66,7 @@
 						<td>Android</td>
 						<td>ARCore</td>
 						<td>immersive-ar</td>
-						<td><a href="#experimental-ar-flags">Experimental AR support</a></td>
+						<td>Enabled in Chrome 81+</td>
 					</tr>
 					<tr>
 						<td>
@@ -96,31 +96,11 @@
 						<td>Windows</td>
 						<td>OpenXR</td>
 						<td>immersive-vr</td>
-						<td><a href="#experimental-vr-flags">Experimental VR support</a></td>
+						<td>Enabled in Chrome 81+, <a href="#experimental-vr-flags">if the XR_EXT_win32_appcontainer_compatible OpenXR extension is available</a></td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
-
-		<h2 id='experimental-ar-flags'>
-			Enabling experimental AR support for mobile devices
-		</h2>
-		<p style="grid-column: 1/3;">
-			Mobile AR support is expected to be available by default soon, but until then it can be enabled by following the steps below.
-			<br/><br/>
-			<b>It is not recommended that you use Chrome with the following flags for daily browsing, as it enables features that have not been deemed ready for wide release.</b>
-		</p>
-		<p style="grid-column: 1/3;">
-			First, navigate to <i>about:flags</i> using the browser's URL bar, then use the search box on the experiments page to locate the <b>WebXR AR Module</b> flag. Set it to <b>"Enabled"</b>.
-		</p>
-		<figure style="grid-column: 1/2;">
-			<img src="./images/chrome-ar-flags.png" alt="AR flags on the about:flags page">
-		</figure>
-		<p style="grid-column: 1/3;">
-			Other experimental AR features can also be enabled on this page for testing, such as <b>WebXR Hit Test</b>, or <b>WebXR Incubations</b> (Chrome v81+) which covers experimental APIs such as <a href="https://immersive-web.github.io/dom-overlays/">DOM Overlay</a> and <a href="https://github.com/immersive-web/lighting-estimation/blob/master/lighting-estimation-explainer.md">Lighting Estimation</a>.
-			<br/><br/>
-			Finally, restart the browser by clicking the <b>"Relaunch"</b> button at the bottom of the page. Upon restart Chrome should be able to use the newly enabled AR features.
-		</p>
 
 		<h2 id='experimental-vr-flags'>
 			Enabling experimental support for other VR headsets
@@ -133,19 +113,19 @@
 			Additionally, please note that runtimes that have not been enabled by default may exhibit a variety of issues or not support all applicable WebXR features.
 		</p>
 		<p style="grid-column: 1/3;">
-			First, navigate to <i>about:flags</i> using the browser's URL bar, then use the search box on the experiments page to locate the <b>XR device sandboxing</b> flag. Set it to <b>"Disabled"</b>.
+			To test Chrome with OpenXR runtimes that do not implement the <b>XR_EXT_win32_appcontainer_compatible</b> extension, use the following command line options:
+			<br/><br/>
+			<b>Unsandboxed OpenXR</b>
+			<pre>--disable-features=XRSandbox<pre>
 		</p>
-		<figure style="grid-column: 1/2;">
-			<img src="./images/chrome-disable-sandbox.png" alt="The XR Device Sandboxing flag on the about:flags page">
-		</figure>
 		<p style="grid-column: 1/3;">
-			Next, search for the XR runtime that you want to use and set the flag to <b>"Enabled"</b>.
-		</p>
-		<figure style="grid-column: 1/2;">
-			<img src="./images/chrome-runtime-flags.png" alt="Various VR runtime flags on the about:flags page">
-		</figure>
-		<p style="grid-column: 1/3;">
-			Finally, restart the browser by clicking the <b>"Relaunch"</b> button at the bottom of the page. Upon restart Chrome should be able to use the newly enabled XR runtimes.
+			To test Chrome with experimental support for the Oculus or OpenVR runtimes, use the following command line options:
+			<br/><br/>
+			<b>OpenVR</b>
+			<pre>--disable-features=XRSandbox --enable-features=openvr --force-webxr-runtime=openvr<pre>
+			<br/><br/>
+			<b>Oculus</b>
+			<pre>--disable-features=XRSandbox --enable-features=oculus --force-webxr-runtime=oculus<pre>
 		</p>
 
 		<footer>
