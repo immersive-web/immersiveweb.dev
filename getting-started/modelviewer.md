@@ -11,5 +11,5 @@ title: model-viewer
 <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
 
 <!-- Use it like any other HTML element -->
-<model-viewer src="examples/assets/Astronaut.glb" alt="A 3D model of an astronaut" auto-rotate camera-controls background-color="#455A64"></model-viewer>
+<model-viewer src="examples/assets/Astronaut.glb" ar alt="A 3D model of an astronaut" auto-rotate camera-controls background-color="#455A64"></model-viewer>
 ```
