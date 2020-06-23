@@ -112,12 +112,12 @@ Here is a full example of an immersive-ar demo made using three.js
 	<body>
 
 		<div id="info">
-			<a href="https://threejs.org" target="_blank" rel="noopener">three.js</a> ar - cones<br/>(Chrome Android 81+)
+			<a href="https://threejs.org" target="_blank" rel="noopener">three.js</a> ar - cones<br/>
 		</div>
 
 		<script type="module">
 
-            import * as THREE from 'https://unpkg.com/three/build/three.module.js';
+            		import * as THREE from 'https://unpkg.com/three/build/three.module.js';
 			import { ARButton } from 'https://unpkg.com/three/examples/jsm/webxr/ARButton.js';
 
 			var container;
