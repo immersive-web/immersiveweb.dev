@@ -42,12 +42,15 @@
 				<tbody>
 					<tr>
 						<td>
-							Windows Mixed Reality PC headsets
+							Oculus,<br/>
+							SteamVR,<br/>
+							Windows Mixed Reality,<br/>
+							OpenXR compatible HMDs
 						</td>
 						<td>Windows</td>
-						<td>Windows Mixed Reality</td>
+						<td>OpenXR</td>
 						<td>immersive-vr</td>
-						<td>Enabled in Chrome 79+</td>
+						<td><a href="#getting-openxr">Enabled in Chrome 81+</a></td>
 					</tr>
 					<tr>
 						<td>
@@ -68,67 +71,43 @@
 						<td>immersive-ar</td>
 						<td>Enabled in Chrome 81+</td>
 					</tr>
-					<tr>
-						<td>
-							Oculus Rift<br/>
-							Oculus Rift S<br/>
-						</td>
-						<td>Windows</td>
-						<td>Oculus</td>
-						<td>immersive-vr</td>
-						<td><a href="#experimental-vr-flags">Experimental VR support</a></td>
-					</tr>
-					<tr>
-						<td>
-							HTC Vive<br/>
-							Valve Index<br/>
-							Other OpenVR-compatible headsets<br/>
-						</td>
-						<td>Windows</td>
-						<td>SteamVR</td>
-						<td>immersive-vr</td>
-						<td><a href="#experimental-vr-flags">Experimental VR support</a></td>
-					</tr>
-					<tr>
-						<td>
-							OpenXR-compatible headsets
-						</td>
-						<td>Windows</td>
-						<td>OpenXR</td>
-						<td>immersive-vr</td>
-						<td>Enabled in Chrome 81+,<br/><a href="#experimental-vr-flags">Requires the XR_EXT_win32_appcontainer_compatible extension</a></td>
-					</tr>
 				</tbody>
 			</table>
 		</div>
 
-		<h2 id='experimental-vr-flags'>
-			Enabling experimental support for other VR headsets
+		<h2 id='getting-openxr'>
+			Getting a compatible OpenXR runtime
 		</h2>
 		<p style="grid-column: 1/-1;">
-			Some desktop headsets are capable of working with Chrome but their associated runtimes have not yet been enabled by default. This is typically because the Chrome team is still working with the runtime developer to ensure it can be used with the browser's security requirements. Developers that want to test Chrome's support for these devices can enable them by following the steps below.
+			Chrome uses <a href="https://www.khronos.org/openxr">OpenXR</a> to interface with VR headsets on Windows.
+			In order to work with Chrome the device's OpenXR runtime must support the <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#XR_EXT_win32_appcontainer_compatible">XR_EXT_win32_appcontainer_compatible</a> extension,
+			which ensures that the runtime can work securely with Chrome's sandboxing.
 			<br/><br/>
-			<b>It is not recommended that you use Chrome with the following flags for daily browsing, as it disables certain security measures around Chrome interaction with VR hardware.</b>
+			See below to learn more about enabling OpenXR support for several popular devices.
+		</p>
+		<p style="grid-column: 1/-1;">
+			<b>Windows Mixed Reality</b>
 			<br/><br/>
-			Additionally, please note that runtimes that have not been enabled by default may exhibit a variety of issues or not support all applicable WebXR features.
+			A compatible OpenXR runtime for Windows Mixed Reality ships with the
+			<a href="https://docs.microsoft.com/en-us/windows/mixed-reality/openxr-getting-started">Windows 10 May 2019 Update (1903)</a> or later.
+		</p>
+		<p style="grid-column: 1/-1;">
+			<b>SteamVR (HTC Vive, Valve Index, etc)</b>
+			<br/><br/>
+			A developer preview of a compatible OpenXR runtime is available as part of the <a href="https://store.steampowered.com/newshub/app/250820/view/2396425843528787269">SteamVR Beta</a>.
+		</p>
+		<p style="grid-column: 1/-1;">
+			<b>Oculus (Rift/Rift S/Quest via Oculus Link)</b>
+			<br/><br/>
+			A developer preview of a compatible OpenXR runtime is available as part of the <a href="https://support.oculus.com/200468603765391/">Oculus Public Test Channel</a>.
 		</p>
 		<p style="grid-column: 1/-1;">
 			<b>Unsandboxed OpenXR</b>
 			<br/><br/>
-			To test Chrome with OpenXR runtimes that do not implement the <i>XR_EXT_win32_appcontainer_compatible</i> extension, use the following command line options:
+			To test Chrome with OpenXR runtimes that do not implement the <i>XR_EXT_win32_appcontainer_compatible</i> extension, WebXR sandboxing must be disabled.<br/><br/>
+			<b>It is not recommended that you use Chrome with the following flags for daily browsing, as it disables certain security measures around Chrome interaction with VR hardware!</b><br/><br/>
+			To disable Chrome's WebXR sandboxing, use the following command line option:
 			<pre>--disable-features=XRSandbox</pre>
-		</p>
-		<p style="grid-column: 1/-1;">
-			<b>OpenVR</b>
-			<br/><br/>
-			To test Chrome with experimental support for OpenVR, use the following command line options:
-			<pre>--disable-features=XRSandbox --enable-features=openvr --force-webxr-runtime=openvr</pre>
-		</p>
-		<p style="grid-column: 1/-1;">
-			<b>Oculus</b>
-			<br/><br/>
-			To test Chrome with experimental support for Oculus, use the following command line options:
-			<pre>--disable-features=XRSandbox --enable-features=oculus --force-webxr-runtime=oculus</pre>
 		</p>
 
 		<footer>
