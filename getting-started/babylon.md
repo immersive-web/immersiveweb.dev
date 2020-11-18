@@ -87,4 +87,4 @@ To start on your own use this simple template:
 </html>
 ```
 
-For advanced examples and documentation see the [Babylon.js WebXR documentation page](https://doc.babylonjs.com/how_to/webxr)
+For advanced examples and documentation see the [Babylon.js WebXR documentation page](https://doc.babylonjs.com/how_to/introduction_to_webxr)
