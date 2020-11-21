@@ -15,7 +15,7 @@ This website uses Github pages to build automatically.
 
 ### Adding new getting-started frameworks
 
-Each framework has it's own file in `/getting-started/` it's in markdown format.
+Each framework has its own file in `/getting-started/`, it's in markdown format.
 
 Each guide should have the following sections:
 
