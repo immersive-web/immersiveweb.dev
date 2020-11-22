@@ -11,7 +11,7 @@ Import WebXR Export and WebXR Interactions packages from OpenUPM.
 - [WebXR Export](https://openupm.com/packages/com.de-panther.webxr/)
 - [WebXR Interactions](https://openupm.com/packages/com.de-panther.webxr-interactions/)
 
-Once pacakges are imported, Go to `Window > WebXR > Copy WebGLTemplates`.
+Once packages are imported, Go to `Window > WebXR > Copy WebGLTemplates`.
 
 ![Copy WebGLTemplates](unity-webxr-export-copy-webgltemplates.png)
 
