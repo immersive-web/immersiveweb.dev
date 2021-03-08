@@ -1,17 +1,15 @@
 ---
-title: AFrameVR
+title: A-Frame
 ---
 
-# AR and VR
+<a href="https://aframe.io/docs">A-Frame</a> is a web framework for building 3D/AR/VR experiences using a combination of HTML and Javascript.
 
-<a href="https://aframe.io/docs">A-Frame</a>, is a JS library to use HTML to create VR and AR experiences in the Web.
-
-A-Frame is based on THREE.js and has a large community, as well as lots of community made custom elements and components. 
+A-Frame is based on three.js and has a large community, as well as lots of community-made custom elements and components.
 
 ```html
 <html>
   <head>
-    <script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
   </head>
   <body>
     <a-scene>
