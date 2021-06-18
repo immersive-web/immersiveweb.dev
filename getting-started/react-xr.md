@@ -17,11 +17,11 @@ For that, the only thing you need to do is to replace `<Canvas>` component with 
 Take a look at those simple example here:
 ### VR 
 https://codesandbox.io/s/react-xr-simple-demo-8i9ro
-![VR demo preview](react-xr-VR.png)
+![VR demo preview](react-xr-VR.PNG)
 
 ### AR
 https://codesandbox.io/s/react-xr-simple-ar-demo-8w8hm
-![AR demo preview](react-xr-AR.png)
+![AR demo preview](react-xr-AR.PNG)
 
 You’ll notice that you now have "Enter VR/AR" button available at the bottom of the screen that should start the experience.
 
