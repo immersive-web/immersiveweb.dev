@@ -3,7 +3,9 @@ title: React-XR
 ---
 [react-xr](https://github.com/pmndrs/react-xr) is a collection of hooks to help you build XR experiences in react-three-fiber applications.
 To make a VR React application we’ll use the following stack:
+
 ![The Stack](react-xr-thestack.png)
+
 [Three.js](https://threejs.org/) is a library for 3D graphics, [react-three-fiber](https://github.com/pmndrs/react-three-fiber) is react renderer for Three.js, [drei](https://github.com/pmndrs/drei) is a collection of reusable components for r3f and react-xr is a collection of hooks to help you build XR experiences in react-three-fiber applications.
 
 # react-xr 
@@ -13,13 +15,13 @@ As soon as you have a 3D scene using react-three-fiber you can make it available
 For that, the only thing you need to do is to replace `<Canvas>` component with `<VRCanvas>` or `<ARCanvas>` from react-xr package. It’s still the same canvas component but with all additional wiring necessary for VR to function.
 
 Take a look at those simple example here:
-- VR 
+### VR 
 https://codesandbox.io/s/react-xr-simple-demo-8i9ro
-![The Stack](react-xr-VR.png)
+![VR demo preview](react-xr-VR.png)
 
-- AR
+### AR
 https://codesandbox.io/s/react-xr-simple-ar-demo-8w8hm
-![The Stack](react-xr-AR.png)
+![AR demo preview](react-xr-AR.png)
 
 You’ll notice that you now have "Enter VR/AR" button available at the bottom of the screen that should start the experience.
 
