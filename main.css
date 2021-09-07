@@ -32,10 +32,15 @@ body {
     max-width: 100%;
     overflow-x: auto;
 }
+table {
+    border-spacing: 0;	
+}
 table td {
     padding: 0.5em;
 }
-
+td:not(:empty) {
+    background: lightgreen;
+}
 thead tr td {
     border-bottom: 1px solid gray;
     font-weight: bold;
