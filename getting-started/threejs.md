@@ -64,7 +64,7 @@ Here is a full example that sets up a scene with a rotating red cube.
         renderer.setPixelRatio(window.devicePixelRatio);
         renderer.setSize(window.innerWidth, window.innerHeight);
         // Turn on VR support
-        renderer.vr.enabled = true;
+        renderer.xr.enabled = true;
         // Set animation loop
         renderer.setAnimationLoop(render);
         // Add canvas to the page
