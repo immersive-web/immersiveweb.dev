@@ -4,8 +4,8 @@
         <tr>
             <td>Feature Name</td>
             <td>Standardisation</td>
-            <td><a href="https://github.com/immersive-web/webxr-polyfill">Polyfill</a></td>
             <td>Chrome</td>
+            <td>Safari on VisionOS</td>
             <td>WebXR Viewer</td>
             <td>Magic Leap Helio</td>
             <td>Samsung Internet</td>
@@ -14,6 +14,7 @@
             <td>Wolvic</td>
             <td>Pico Browser</td>
             <td>Immersive Web Emulator<br>[<a href="https://chrome.google.com/webstore/detail/immersive-web-emulator/cgffilbpcibhmcfbgggfhfolhkfbhmik">Chrome</a>] [<a href="https://microsoftedge.microsoft.com/addons/detail/immersive-web-emulator/hhlkbhldhffpeibcfggfndbkfohndamj">Edge</a>]</td>
+            <td><a href="https://github.com/immersive-web/webxr-polyfill">Polyfill</a></td>
         </tr>
     </thead>
     <tbody>
@@ -24,15 +25,16 @@
                 <a href="https://www.w3.org/TR/webxr/">Spec</a><br />
                 <a href="https://developer.mozilla.org/en-US/docs/Web/API/XRSystem/requestSession#parameters">MDN</a><br />
             </td>
-            <td>Supported, will make use of WebVR if available and WebXR is not.</td>
             <td>Chrome 79</td>
-            <td>iOS</td>
+            <td><!--Safari on Vision OS --><a href="https://webkit.org/blog/14205/news-from-wwdc23-webkit-features-in-safari-17-beta/#webxr">Behind a feature flag</a></td>
+            <td><!--WebXR Viewer-->iOS</td>
             <td>Magic Leap Helio 0.98</td>
             <td>Samsung Internet 12.0</td>
             <td>7.0, December 2019</td>
             <td>Edge 87 on Windows Desktop <br>Edge 91 on Hololens 2</td>
-            <td>0.9.3, February 2022</td>
-            <td>Supported</td>
+            <td>0.9.3, February 2022</td>             <td><!--Pico Browser--></td>
+            <td><!--Immersive Web Emulator-->Supported</td>
+            <td><!--Polyfill-->Supported, will make use of WebVR if available and WebXR is not.</td>
         </tr>
         <tr>
             <td>WebXR AR Module</td>
@@ -41,15 +43,16 @@
                 <a href="https://www.w3.org/TR/webxr-ar-module-1/">Spec</a><br />
                 <a href="https://developer.mozilla.org/en-US/docs/Web/API/XRSystem/requestSession#parameters">MDN</a><br />
             </td>
-            <td><!--Polyfill--></td>
             <td>Chrome for Android, 81</td>
+            <td><!--Safari on Vision OS --></td>
             <td>iOS</td>
             <td>Magic Leap Helio 0.98</td>
             <td>Samsung Internet 12.1</td>
             <td>24.0, October 2022</td>
             <td>Edge 91. Hololens 2 only</td>
-            <td><!--Wolvic--></td>
+            <td><!--Wolvic--></td>             <td><!--Pico Browser--></td>
             <td><!--Immersive Web Emulator--></td>
+            <td><!--Polyfill--></td>
         </tr>
         <tr>
             <td>WebXR Gamepads Module</td>
@@ -58,14 +61,15 @@
                 <a href="https://www.w3.org/TR/webxr-gamepads-module-1/">Spec</a><br />
                 <a href="https://developer.mozilla.org/en-US/docs/Web/API/XRInputSource/gamepad">MDN</a><br />
             </td>
-            <td>Supported</td>
             <td>Chrome 79</td>
+            <td><!--Safari on Vision OS --></td>
             <td></td>
             <td>Partially supported on Magic Leap Helio 0.98</td>
             <td>Samsung Internet 12.0</td>
             <td>7.1, December 2019</td>
             <td>Edge 87 on Windows Desktop <br>Edge 91 on Hololens 2</td>
-            <td>0.9.3, February 2022</td>
+            <td>0.9.3, February 2022</td>             <td><!--Pico Browser--></td>
+            <td>Supported</td>
             <td>Supported</td>
         </tr>
         <tr>
@@ -75,8 +79,8 @@
                 <a href="https://immersive-web.github.io/hit-test/">Spec</a><br />
                 <a href="https://developer.mozilla.org/en-US/docs/Web/API/XRHitTestSource">MDN</a><br />
             </td>
-            <td><!--Polyfill--></td>
             <td>Chrome for Android, 81</td>
+            <td><!--Safari on Vision OS --></td>
             <td>IOS</td>
             <td><!--Magic Leap Helio--></td>
             <td>Samsung Internet 12.1</td>
@@ -85,6 +89,7 @@
             <td><!--Wolvic--></td>
             <td><!--Pico Browser--></td>
             <td><!--Immersive Web Emulator--></td>
+            <td><!--Polyfill--></td>
         </tr>
         <tr>
             <td>DOM Overlays</td>
@@ -93,8 +98,8 @@
                 <a href="https://immersive-web.github.io/dom-overlays/">Spec</a><br />
                 <a href="https://developer.mozilla.org/en-US/docs/Web/API/XRSystem/requestSession#parameters">MDN</a><br />
             </td>
-            <td><!--Polyfill--></td>
             <td>Chrome for Android, 83</td>
+            <td><!--Safari on Vision OS --></td>
             <td>IOS</td>
             <td><!--Magic Leap Helio--></td>
             <td>Samsung Internet 14.2</td>
@@ -103,6 +108,7 @@
             <td><!--Wolvic--></td>
             <td><!--Pico Browser--></td>
             <td><!--Immersive Web Emulator--></td>
+            <td><!--Polyfill--></td>
         </tr>
         <tr>
             <td>Layers</td>
@@ -111,14 +117,17 @@
                 <a href="https://www.w3.org/TR/webxrlayers-1/">Spec</a><br />
                 <a href="https://developer.mozilla.org/en-US/docs/Web/API/XRWebGLLayer">MDN</a><br />
             </td>
-            <td>Supported. See <a href="https://github.com/immersive-web/webxr-layers-polyfill">here</a>.</td>
             <td><!--Chrome--></td>
+            <td><!--Safari on Vision OS --></td>
             <td><!--WebXR Viewer--></td>
             <td><!--Magic Leap Helio--></td>
             <td><!--Samsung Internet--></td>
             <td><!--Meta Quest Browser-->16.1</td>
             <td><!--Microsoft Edge--></td>
+            <td><!--Wolvic--></td>
             <td><!--Pico Browser--></td>
+            <td><!--Immersive Web Emulator--></td>
+            <td>Supported. See <a href="https://github.com/immersive-web/webxr-layers-polyfill">here</a>.</td>
         </tr>
         <tr>
             <td>Hand input</td>
@@ -127,8 +136,8 @@
                 <a href="https://www.w3.org/TR/webxr-hand-input-1/">Spec</a><br />
                 <a href="https://developer.mozilla.org/en-US/docs/Web/API/XRHand">MDN</a> <br />
             </td>
-            <td><!--Polyfill--></td>
             <td><!--Chrome--></td>
+            <td><!--Safari on Vision OS --><a href="https://webkit.org/blog/14205/news-from-wwdc23-webkit-features-in-safari-17-beta/#webxr">Behind a feature flag</a></td>
             <td><!--WebXR Viewer--></td>
             <td><!--Magic Leap Helio--></td>
             <td><!--Samsung Internet--></td>
@@ -136,6 +145,7 @@
             <td>Edge 93. Hololens 2 only</td>
             <td><!--Wolvic--></td>
             <td><!--Pico Browser--></td>
+            <td><!--Polyfill--></td>
             <td><!--Immersive Web Emulator--></td>
         </tr>
         <tr>
@@ -145,8 +155,8 @@
                 <a href="https://immersive-web.github.io/anchors/">Spec</a><br />
                 <a href="https://developer.mozilla.org/en-US/docs/Web/API/XRAnchor">MDN</a><br />
             </td>
-            <td><!--Polyfill--></td>
             <td><!--Chrome-->Chrome for Android, 85</td>
+            <td><!--Safari on Vision OS --></td>
             <td><!--WebXR Viewer--></td>
             <td><!--Magic Leap Helio--></td>
             <td><!--Samsung Internet-->15.2</td>
@@ -154,6 +164,7 @@
             <td>Edge 93. Hololens 2 only</td>
             <td><!--Wolvic--></td>
             <td><!--Pico Browser--></td>
+            <td><!--Polyfill--></td>
             <td><!--Immersive Web Emulator--></td>
         </tr>
         <tr>
@@ -163,8 +174,8 @@
                 <a href="https://immersive-web.github.io/depth-sensing/">Spec</a><br />
                 <a href="https://developer.mozilla.org/en-US/docs/Web/API/XRDepthInformation">MDN</a><br />
             </td>
-            <td><!--Polyfill--></td>
             <td><!--Chrome-->Chrome for Android, 90</td>
+            <td><!--Safari on Vision OS --></td>
             <td><!--WebXR Viewer--></td>
             <td><!--Magic Leap Helio--></td>
             <td><!--Samsung Internet--></td>
@@ -172,6 +183,7 @@
             <td><!--Microsoft Edge--></td>
             <td><!--Wolvic--></td>
             <td><!--Pico Browser--></td>
+            <td><!--Polyfill--></td>
             <td><!--Immersive Web Emulator--></td>
         </tr>
         <tr>
@@ -181,8 +193,8 @@
                 <a href="https://immersive-web.github.io/lighting-estimation/">Spec</a><br />
                 <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebXR_Device_API/Lighting">MDN</a><br />
             </td>
-            <td><!--Polyfill--></td>
             <td><!--Chrome-->Chrome for Android, 90</td>
+            <td><!--Safari on Vision OS --></td>
             <td><!--WebXR Viewer--></td>
             <td><!--Magic Leap Helio--></td>
             <td><!--Samsung Internet-->15.2</td>
@@ -190,13 +202,14 @@
             <td><!--Microsoft Edge--></td>
             <td><!--Wolvic--></td>
             <td><!--Pico Browser--></td>
+            <td><!--Polyfill--></td>
             <td><!--Immersive Web Emulator--></td>
         </tr>
         <tr>
             <td>Additional Details</td>
             <td><!--Standardisation--></td>
-            <td><!--Polyfill--></td>
             <td><a href="chrome-support.html">Hardware Support Details</a></td>
+            <td><!--Safari on Vision OS --></td>
             <td><a href="https://blog.mozvr.com/webxr-viewer-2-0-released/">2.0 announcement</a></td>
             <td><!--Magic Leap Helio--></td>
             <td><!--Samsung Internet--></td>
@@ -205,6 +218,7 @@
             <td><a href="https://www.igalia.com/2022/02/03/Introducing-Wolvic.html" />Introducing Wolvic</td>
             <td><!--Pico Browser--></td>
             <td><a href="https://github.com/meta-quest/immersive-web-emulator/">GitHub</a></td>
+            <td><!--Polyfill--></td>
         </tr>
         <tr style="display: none">
             <td>Name</td>
@@ -214,6 +228,7 @@
             </td>
             <td><!--Polyfill--></td>
             <td><!--Chrome--></td>
+            <td><!--Safari on Vision OS --></td>
             <td><!--WebXR Viewer--></td>
             <td><!--Magic Leap Helio--></td>
             <td><!--Samsung Internet--></td>
