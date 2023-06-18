@@ -162,6 +162,10 @@ nav[role="tablist"] > a:target {
     pointer-events: painted;
 }
 
+.tabs img {
+    max-width: 100%;
+}
+
 *:focus {
     outline: 3px solid #24aef4;
 }
