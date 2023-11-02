@@ -53,7 +53,7 @@ Here is a full example that sets up a scene with a rotating red cube.
 
         // Make a red cube
         let cube = new THREE.Mesh(
-            new THREE.BoxBufferGeometry(1,1,1),
+            new THREE.BoxGeometry(1,1,1),
             new THREE.MeshLambertMaterial({color:'red'})
         );
         cube.position.set(0, 1.5, -10);
