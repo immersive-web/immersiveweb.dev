@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }} - Immersive Web</title>
+  <meta name="description" content="{{ page.description }}">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="{{ page.title }} - Immersive Web">
+  <meta property="og:description" content="{{ page.description }}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+
+  <link rel="stylesheet" href="{{ site.baseurl }}/main.css">
+  <link rel="icon" href="{{ site.baseurl }}/favicon.ico">
+
+  <!-- Model element WebGL fallback for browsers without native support -->
+  <script type="module">
+    if (!window.HTMLModelElement) {
+      window.modelFallbackReady = import('{{ site.baseurl }}/scripts/model-element-polyfill.min.js');
+    }
+  </script>
+
+</head>
+<body>
+
+  <nav class="site-nav" aria-label="Site navigation">
+    <div class="site-nav-inner container">
+      <a href="{{ site.baseurl }}/"
+         class="nav-link{% if page.nav == 'webxr' %} nav-link--active{% endif %}"
+         style="view-transition-name: nav-link-webxr"
+         {% if page.nav == 'webxr' %}aria-current="page"{% endif %}>
+        {% if page.nav == 'webxr' %}<span class="nav-pill"></span>{% endif %}
+        WebXR
+      </a>
+      <a href="{{ site.baseurl }}/model"
+         class="nav-link{% if page.nav == 'model' %} nav-link--active{% endif %}"
+         style="view-transition-name: nav-link-model"
+         {% if page.nav == 'model' %}aria-current="page"{% endif %}>
+        {% if page.nav == 'model' %}<span class="nav-pill"></span>{% endif %}
+        Model
+      </a>
+    </div>
+  </nav>
+
+  <main class="container">
+    {{ content }}
+  </main>
+
+  <div class="accent-bar" aria-hidden="true"></div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>
+        <a href="https://w3.org/immersive-web">W3C Immersive Web Working and Community Groups</a>.
+        Content is <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 Licensed</a>.
+        <a href="https://github.com/immersive-web/immersiveweb.dev">Contribute on GitHub</a>.
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>
