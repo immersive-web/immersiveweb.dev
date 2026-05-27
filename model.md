@@ -24,6 +24,10 @@ and cannot work in all contexts
 
 The `<model>` element is a proposed solution:
 a new [replaced element](https://drafts.csswg.org/css-display/#replaced-element) that embeds 3D content the same way `<video>` embeds video.
+
+The content of the 3D model file appears as a 3D figure,
+inside a portal in the page.
+
 The browser itself is responsible for rendering the model,
 which means it can take advantage of platform capabilities
 like stereoscopic display, environment lighting, and casting shadows from real-world objects
@@ -100,7 +104,11 @@ Drag to rotate the helmet below.
 The `stagemode="orbit"` attribute tells the browser to present the model on a turntable that the user can spin and zoom freely.
 
 <figure>
-  <model src="{{ site.baseurl }}/models/DamagedHelmet.usdz" stagemode="orbit" alt="Damaged flight helmet 3D model" style="max-width: 300px; width: 100%; height: auto; aspect-ratio: 1;"></model>
+  <model stagemode="orbit" alt="Damaged flight helmet 3D model" style="max-width: 300px; width: 100%; height: auto; aspect-ratio: 1;">
+    <source src="{{ site.baseurl }}/models/DamagedHelmet.usdz" type="model/vnd.usdz+zip">
+    <source src="{{ site.baseurl }}/models/DamagedHelmet.glb" type="model/gltf-binary">
+    <img src="{{ site.baseurl }}/models/DamagedHelmet.jpg" alt="Damaged flight helmet 3D model">
+  </model>
   <figcaption>
     Flight helmet with damage — <a href="https://sketchfab.com/3d-models/battle-damaged-sci-fi-helmet-pbr-b81008d513954189a063ff901f7abfe4">model by theblueturtle_</a> (CC BY-NC 4.0), <a href="https://github.com/KhronosGroup/glTF-Sample-Assets/tree/main/Models/DamagedHelmet">glTF rebuild by ctxwing</a> (CC BY 4.0). Converted to USDZ for this example.
   </figcaption>
@@ -109,14 +117,12 @@ The `stagemode="orbit"` attribute tells the browser to present the model on a tu
 The markup for this example:
 
 ```html
-<model style="width: 300px; height: 300px" stagemode="orbit">
+<model style="width: 300px; height: 300px" stagemode="orbit" alt="Damaged flight helmet 3D model">
   <source src="DamagedHelmet.usdz" type="model/vnd.usdz+zip">
-  <img src="helmet-preview.jpg" alt="Damaged flight helmet 3D model">
+  <source src="DamagedHelmet.glb" type="model/gltf-binary">
+  <img src="DamagedHelmet.jpg" alt="Damaged flight helmet 3D model">
 </model>
 ```
-
-Without `stagemode`, the model is displayed at its authored orientation with no built-in user interaction.
-The `entityTransform` JavaScript property can be used to control the view programmatically in that case.
 
 </section>
 
@@ -144,6 +150,9 @@ Setting `stagemode="orbit"` allows the user to rotate the model directly within 
   <source src="chair.glb" type="model/gltf-binary">
 </model>
 ```
+
+Without `stagemode`, the model is displayed at its authored orientation with no built-in user interaction.
+The `entityTransform` JavaScript property can be used to control the view programmatically in that case.
 
 ### Key attributes
 
@@ -193,9 +202,8 @@ Control the position, rotation, and scale of the model programmatically.
 
 The `entityTransform` property is a read-write `DOMMatrixReadOnly` that controls the position, rotation, and scale of the model within the element's viewport.
 The coordinate system is right-handed and Y-up, with the origin at the centre of the view plane.
-One unit equals one CSS metre,
-but in practice values are expressed in centimetres.
-A 10 cm box inside a 10 cm portal fills it exactly.
+One unit equals one CSS metre.
+A 10 cm (0.1 units) box inside a square 10 cm portal fills it exactly when the `entityTransform` is the identity matrix.
 
 The browser computes an initial `entityTransform` that centres the model on its bounding box
 and scales it to fit within the element's portal.
@@ -248,7 +256,10 @@ Models can carry embedded animations. Set the `autoplay` attribute to start play
 Try speeding up or slowing down the propeller:
 
 <div class="animation-demo">
-  <model id="plane-model" src="{{ site.baseurl }}/models/plane-mini.usdz" autoplay loop alt="Small animated plane with a spinning propeller" style="max-width: 480px; width: 100%; height: auto; aspect-ratio: 16/9;"></model>
+  <model id="plane-model" autoplay loop alt="Small animated plane with a spinning propeller" style="max-width: 480px; width: 100%; height: auto; aspect-ratio: 16/9;">
+    <source src="{{ site.baseurl }}/models/plane-mini.usdz" type="model/vnd.usdz+zip">
+    <source src="{{ site.baseurl }}/models/plane-optim.glb" type="model/gltf-binary">
+  </model>
   <div class="animation-controls">
     <label for="plane-rate">Propeller speed <output id="plane-rate-output">1.0×</output></label>
     <input type="range" id="plane-rate" min="0" max="10" step="0.1" value="1">

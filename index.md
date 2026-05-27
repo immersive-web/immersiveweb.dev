@@ -6,7 +6,10 @@ nav: webxr
 ---
 
 <section class="hero">
-  <model id="hero-model" src="{{ site.baseurl }}/models/webxr-logo.glb" alt="WebXR Logo"></model>
+  <model id="hero-model" alt="WebXR Logo">
+    <source src="{{ site.baseurl }}/models/webxr-logo.usdz" type="model/vnd.usdz+zip">
+    <source src="{{ site.baseurl }}/models/webxr-logo.glb" type="model/gltf-binary">
+  </model>
   <div class="hero-text">
     <h1>WebXR</h1>
     <p>A web standard for accessing virtual and augmented reality hardware from the browser.</p>
