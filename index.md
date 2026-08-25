@@ -163,6 +163,314 @@ Learn more in the [WebXR Explainer on GitHub](https://github.com/immersive-web/w
 
 <div class="accent-bar" aria-hidden="true"></div>
 
+<section class="card" id="getting-started" markdown="1">
+
+## Getting Started with WebXR Development
+
+WebXR is a relatively low-level API: it handles immersive sessions, tracking and input, while scene management and rendering are generally handled by your application. 
+
+Many developers use a 3D framework, library or engine to take care of this additional setup. Below are minimal starter scenes for a few widely used tools, listed alphabetically. 
+
+Each scene shows a lit, rotating cube and provides a way to enter immersive AR or VR, depending on what the device and browser support. You can save one of these examples as an `.html` file, serve it from a secure context—for example, over HTTPS or from `http://localhost` during local development—and open it in a browser that supports WebXR.
+
+Browsers require immersive WebXR sessions to be requested in response to user activation, such as clicking a button. Each example below handles this user-initiated entry in its own way.
+
+<details name="framework" markdown="1">
+<summary><strong>A-Frame</strong></summary>
+
+A-Frame's `<a-scene>` element sets up the renderer, camera, lights and WebXR support automatically.
+
+Its built-in UI shows Enter VR and/or Enter AR controls depending on what the browser supports, while `hide-on-enter-ar` hides the plane and sky in AR so they do not obscure the real-world view.
+
+```html
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="https://aframe.io/releases/1.8.0/aframe.min.js"></script>
+</head>
+
+<body>
+  <a-scene xr-mode-ui="XRMode: xr">
+    <!-- 70° FOV for a consistent inline preview; WebXR supplies the immersive projection -->
+    <a-camera fov="70"></a-camera>
+    <a-box position="0 1.2 -1.5" depth="0.35" height="0.35" width="0.35" color="#F3CB00"
+      animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear"></a-box>
+    <a-plane position="0 0 -1.5" rotation="-90 0 0" width="4" height="4" color="#E65FDE" hide-on-enter-ar></a-plane>
+    <a-sky color="#00C0E2" hide-on-enter-ar></a-sky>
+  </a-scene>
+</body>
+
+</html>
+```
+
+[Full A-Frame guide →](https://aframe.io/docs/1.8.0/introduction/)
+
+</details>
+
+<details name="framework" markdown="1">
+<summary><strong>Babylon.js</strong></summary>
+
+Babylon.js provides a default XR experience helper sets up the XR camera, input handling, common interactions and enter-XR UI in a single call.
+
+This example checks for `immersive-ar` support first and configures the helper for `immersive-vr` otherwise.
+
+```html
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/babylonjs@9.22.0/babylon.js"></script>
+  <style>
+    html,
+    body {
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    canvas {
+      width: 100%;
+      height: 100%;
+      touch-action: none;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="canvas"></canvas>
+  <script>
+    const engine = new BABYLON.Engine(document.getElementById('canvas'), true);
+
+    const createScene = async () => {
+      const scene = new BABYLON.Scene(engine);
+      scene.clearColor = BABYLON.Color4.FromHexString('#00C0E2FF');
+      const camera = new BABYLON.FreeCamera('camera', new BABYLON.Vector3(0, 1.6, 0), scene);
+      camera.setTarget(new BABYLON.Vector3(0, 1.6, 1.5));
+      camera.fov = 70 * Math.PI / 180; // 70° FOV for a consistent inline preview
+      new BABYLON.HemisphericLight('light', new BABYLON.Vector3(0, 1, 0), scene);
+
+      const box = BABYLON.MeshBuilder.CreateBox('box', { size: 0.35 }, scene);
+      box.position.set(0, 1.2, 1.5); // Babylon uses a left-handed coordinate system by default, so +z is forward
+      box.material = new BABYLON.StandardMaterial('boxMat', scene);
+      box.material.diffuseColor = BABYLON.Color3.FromHexString('#F3CB00');
+      scene.onBeforeRenderObservable.add(() =>
+        box.rotate(BABYLON.Axis.Y, (Math.PI / 5) * (engine.getDeltaTime() / 1000)));
+
+      const floor = BABYLON.MeshBuilder.CreateGround('floor', { width: 4, height: 4 }, scene);
+      floor.position.z = 1.5;
+      floor.material = new BABYLON.StandardMaterial('floorMat', scene);
+      floor.material.diffuseColor = BABYLON.Color3.FromHexString('#E65FDE');
+
+      const ar = await BABYLON.WebXRSessionManager.IsSessionSupportedAsync('immersive-ar');
+
+      const xr = await scene.createDefaultXRExperienceAsync({
+        floorMeshes: ar ? [] : [floor],
+        uiOptions: { sessionMode: ar ? 'immersive-ar' : 'immersive-vr' }
+      });
+
+      xr.baseExperience.onStateChangedObservable.add((state) => {
+        if (ar && state === BABYLON.WebXRState.IN_XR) {
+          scene.clearColor = new BABYLON.Color4(0, 0, 0, 0);
+          floor.setEnabled(false);
+        }
+      });
+      return scene;
+    };
+
+    createScene().then(scene => engine.runRenderLoop(() => scene.render()));
+  </script>
+</body>
+
+</html>
+```
+
+[Full Babylon.js WebXR guide →](https://doc.babylonjs.com/features/featuresDeepDive/webXR/introToWebXR)
+
+</details>
+
+<details name="framework" markdown="1">
+<summary><strong>PlayCanvas</strong></summary>
+
+PlayCanvas can be used through its collaborative online editor or, as here, directly as a JavaScript engine.
+
+Starting a session is an explicit `app.xr.start()` call, made inside a click handler.
+
+```html
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/playcanvas@2.21.4/build/playcanvas.min.js"></script>
+  <style>
+    html,
+    body,
+    canvas {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    #enter-xr {
+      position: absolute;
+      bottom: 1em;
+      left: 50%;
+      translate: -50%;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="canvas"></canvas>
+  <button id="enter-xr">Enter WebXR</button>
+  <script>
+    const app = new pc.Application(document.getElementById('canvas'));
+    app.setCanvasFillMode(pc.FILLMODE_FILL_WINDOW);
+    app.setCanvasResolution(pc.RESOLUTION_AUTO);
+    app.start();
+
+    const camera = new pc.Entity();
+    camera.addComponent('camera', {
+      clearColor: new pc.Color().fromString('#00C0E2'),
+      fov: 70 // 70° FOV for a consistent inline preview
+    });
+    camera.setPosition(0, 1.6, 0);
+    app.root.addChild(camera);
+
+    const light = new pc.Entity();
+    light.addComponent('light');
+    light.setEulerAngles(45, 30, 0);
+    app.root.addChild(light);
+
+    const boxMaterial = new pc.StandardMaterial();
+    boxMaterial.diffuse.fromString('#F3CB00');
+    boxMaterial.update();
+
+    const box = new pc.Entity();
+    box.addComponent('render', { type: 'box', material: boxMaterial });
+    box.setLocalScale(0.35, 0.35, 0.35);
+    box.setPosition(0, 1.2, -1.5);
+    app.root.addChild(box);
+    app.on('update', dt => box.rotate(0, 36 * dt, 0));
+
+    const floorMaterial = new pc.StandardMaterial();
+    floorMaterial.diffuse.fromString('#E65FDE');
+    floorMaterial.update();
+
+    const floor = new pc.Entity();
+    floor.addComponent('render', { type: 'plane', material: floorMaterial });
+    floor.setLocalScale(4, 1, 4);
+    floor.setPosition(0, 0, -1.5);
+    app.root.addChild(floor);
+
+    const button = document.getElementById('enter-xr');
+    button.addEventListener('click', () => {
+      const ar = app.xr.isAvailable(pc.XRTYPE_AR);
+      if (!ar && !app.xr.isAvailable(pc.XRTYPE_VR)) {
+        button.textContent = 'Immersive WebXR unavailable';
+        return;
+      }
+      if (ar) {
+        camera.camera.clearColor = new pc.Color(0, 0, 0, 0);
+        floor.enabled = false;
+      }
+      app.xr.start(camera.camera, ar ? pc.XRTYPE_AR : pc.XRTYPE_VR, pc.XRSPACE_LOCALFLOOR);
+    });
+  </script>
+</body>
+
+</html>
+```
+
+[Full PlayCanvas WebXR guide →](https://developer.playcanvas.com/user-manual/xr/)
+
+</details>
+
+<details name="framework" markdown="1">
+<summary><strong>Three.js</strong></summary>
+
+three.js exposes WebXR through its renderer: enable `renderer.xr`, drive rendering with `setAnimationLoop` and add the `XRButton` helper, which offers `immersive-ar` where supported and falls back to `immersive-vr` otherwise.
+
+```html
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    body {
+      margin: 0;
+    }
+  </style>
+  <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.185.1/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.185.1/examples/jsm/"
+        }
+      }
+    </script>
+</head>
+
+<body>
+  <script type="module">
+    import * as THREE from 'three';
+    import { XRButton } from 'three/addons/webxr/XRButton.js';
+
+    const sky = new THREE.Color(0x00c0e2);
+    const scene = new THREE.Scene();
+    scene.background = sky;
+    // 70° FOV for a consistent inline preview; WebXR supplies the immersive projection
+    const camera = new THREE.PerspectiveCamera(70, innerWidth / innerHeight, 0.1, 100);
+    camera.position.set(0, 1.6, 0);
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(innerWidth, innerHeight);
+    renderer.xr.enabled = true;
+    document.body.append(renderer.domElement, XRButton.createButton(renderer));
+
+    const box = new THREE.Mesh(
+      new THREE.BoxGeometry(0.35, 0.35, 0.35),
+      new THREE.MeshStandardMaterial({ color: 0xf3cb00 })
+    );
+    box.position.set(0, 1.2, -1.5);
+
+    const floor = new THREE.Mesh(
+      new THREE.PlaneGeometry(4, 4),
+      new THREE.MeshStandardMaterial({ color: 0xe65fde })
+    );
+    floor.rotation.x = -Math.PI / 2;
+    floor.position.z = -1.5;
+
+    scene.add(box, floor, new THREE.HemisphereLight(0xffffff, 0x444444, 2));
+
+    renderer.xr.addEventListener('sessionstart', () => {
+      const ar = renderer.xr.getSession().environmentBlendMode !== 'opaque';
+      scene.background = ar ? null : sky;
+      floor.visible = !ar;
+    });
+
+    renderer.setAnimationLoop((time) => {
+      box.rotation.y = (time / 1000) * (Math.PI / 5);
+      renderer.render(scene, camera);
+    });
+  </script>
+</body>
+
+</html>
+```
+
+[Full three.js WebXR guide →](https://threejs.org/manual/#en/webxr-basics)
+
+</details>
+
+These four are only a small sample of a much larger ecosystem—many other libraries, engines and tools support WebXR, and the ones above are shown for illustration rather than endorsement.
+
+Check out the community maintained [Awesome WebXR](https://github.com/msub2/awesome-webxr) repo for more options. If you would rather work with the WebXR Device API directly, the [WebXR Samples](https://immersive-web.github.io/webxr-samples/) page demonstrates direct API usage, while the [WebXR explainer](https://github.com/immersive-web/webxr/blob/main/explainer.md) covers the underlying concepts.
+
+<div class="accent-bar" aria-hidden="true"></div>
+
 <section class="card" id="demo" markdown="1">
 
 ## Try WebXR
