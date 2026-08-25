@@ -359,6 +359,45 @@ section {
   vertical-align: middle;
 }
 
+/* -- Getting started -------------------------------------------------------- */
+
+#getting-started details {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg-raised);
+  margin-block: var(--space-sm);
+
+  & summary {
+    cursor: pointer;
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-md);
+    transition: color 0.15s ease;
+
+    &:hover { color: var(--link-hover); }
+
+    &::marker { color: var(--cyan); }
+  }
+
+  &[open] > summary {
+    border-bottom: 1px solid var(--border);
+    border-end-start-radius: 0;
+    border-end-end-radius: 0;
+    margin-bottom: var(--space-sm);
+  }
+
+  & > :not(summary) {
+    margin-inline: var(--space-md);
+  }
+
+  & > :last-child:not(summary) {
+    margin-bottom: var(--space-md);
+  }
+
+  & pre {
+    background: var(--bg);
+  }
+}
+
 /* -- Footer ----------------------------------------------------------------- */
 
 .site-footer {
